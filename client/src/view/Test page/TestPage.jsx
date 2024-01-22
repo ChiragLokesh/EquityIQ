@@ -1,6 +1,37 @@
 import React from "react";
+// Learn how navigation works
+import { Link, useNavigate } from 'react-router-dom';
 
 function TestPage(){
+  const navigate = useNavigate();
+
+  const idk = async (event) => {
+    event.preventDefault(); // Find out what prevent default is
+    // Copied from LoginPage 
+    try {
+    
+      // Log to see if this works
+      console.log('Testing 123');
+
+      // Now you can navigate or perform additional actions if needed
+      navigate('/LoginSuccessPage');
+
+      // Set the success message
+      setOkMessage('Login successful');
+
+      // Clear the error message
+      setErrorMessage('');
+    } catch (error) {
+      // If there's an error, you can handle it here
+      console.error('Some error', error);
+
+      // Display an error message to the user
+      setErrorMessage('Something went wrong');
+
+      // Clear the success message
+      setOkMessage('');
+    }
+  };
 
     return(
         <div className="flex min-h-screen justify-center items-center">

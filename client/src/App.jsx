@@ -7,6 +7,7 @@ import LoginSuccessPage from './view/Login/LoginSuccessPage';
 import SignUpPage from './view/SignUp/SignUp'
 import MarketData from './view/MarketData/MarketData'
 import ForgotPasswordPage from './view/Login/forgotpassword'
+import TestPage from './view/Test page/TestPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
       <Route path='/sign-up' element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path='/market-data' element={<MarketData />} />
+      <Route path='/testpage' element={<TestPage/>} />
       <Route path='/' element={<>uifiudfgieufg</>} />
     </Routes>
   )
