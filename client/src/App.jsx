@@ -8,18 +8,26 @@ import SignUpPage from './view/SignUp/SignUp'
 import MarketData from './view/MarketData/MarketData'
 import ForgotPasswordPage from './view/Login/forgotpassword'
 import TestPage from './view/Test page/TestPage'
+import KnowHub from './view/KnowHub/KnowHub'
+import Test from './view/KnowHub/test'
+import StockMarket from './view/KnowHub/module1/StockMarket'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <Routes>
-      <Route path='/login' element={<LoginPage />} />
+      {/*
+       <Route path='/login' element={<LoginPage />} />
+      */}
+      <Route path='/stockmarket' element={<StockMarket/>} />
+      <Route path='/knowledge' element={<KnowHub/>} />
       <Route path='/forgot-password' element={<ForgotPasswordPage/>} />
       <Route path='/sign-up' element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path='/market-data' element={<MarketData />} />
       <Route path='/testpage' element={<TestPage/>} />
+      <Route path='/test' element={<Test/>} />
       <Route path='/' element={<LoginPage/>} />
     </Routes>
   )
