@@ -14,17 +14,6 @@ function LoginPage() {
   const [okMessage, setOkMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleForgotPassword = async () => {
-    try {
-      await sendPasswordResetEmail(auth, email);
-      setOkMessage('Password reset email sent. Check your inbox.');
-      setErrorMessage('');
-    } catch (error) {
-      console.error('Forgot Password Error', error);
-      setErrorMessage('Failed to send password reset email. Please try again.');
-      setOkMessage('');
-    }
-  };
 
   const emailAndPasswordSignIn = async (event) => {
     event.preventDefault();
