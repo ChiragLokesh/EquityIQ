@@ -20,7 +20,7 @@ function App() {
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path='/market-data' element={<MarketData />} />
       <Route path='/testpage' element={<TestPage/>} />
-      <Route path='/' element={<>uifiudfgieufg</>} />
+      <Route path='/' element={<LoginPage/>} />
     </Routes>
   )
 }

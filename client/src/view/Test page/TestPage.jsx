@@ -46,12 +46,16 @@ function TestPage(){
             <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
               Welcome to Equity IQ
             </h2>
+            <button
+                  type="submit"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Click me
+                </button>
           </div>
-          <button type="button" class="bg-indigo-500 ..." disabled>
-            Click me
-        </button>
         </div>
       </div>
+
     );
 }
 
