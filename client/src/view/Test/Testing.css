@@ -1,0 +1,85 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;  /*Color for NavBar*/
+    padding: 10px;
+  }
+
+  .navbar-logo {
+    flex: 1; /*IDK*/
+  }
+
+  /* this doesn't work. Trying to change entire screen white. */
+  /* .heading{
+    background-color: #ffffff;
+  } */
+
+  .title{
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 60px;
+    padding-top: 50px;
+    padding-left: 50px;
+  }
+  
+  .subtitle{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 50px;
+  }
+
+  .navbar-logo img {
+    width: 80px; /*Size of logo*/
+    height: auto;
+  }
+
+
+  .navbar-links {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+  }
+
+  .navbar-links a {
+    color: #f2f2f2;
+    text-decoration: none;
+    padding: 10px 15px;
+  }
+
+  .navbar-links a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .navbar-search {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .navbar-search input[type="text"] {
+    padding: 5px;
+    margin-right: 5px;
+  }
+
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .navbar-links, .navbar-search {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .navbar-search {
+      width: 100%;
+      justify-content: center;
+    }
+}

@@ -10,6 +10,7 @@ import ForgotPasswordPage from './view/Login/forgotpassword'
 import KnowHub from './view/KnowHub/KnowHub'
 import Test from './view/KnowHub/test'
 import StockMarket from './view/KnowHub/module1/StockMarket'
+import Testing from './view/Test/Testing'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path='/market-data' element={<MarketData />} />
       <Route path='/test' element={<Test/>} />
+      <Route path='/testing' element={<Testing/>} />
       <Route path='/' element={<LoginPage/>} />
     </Routes>
   )
