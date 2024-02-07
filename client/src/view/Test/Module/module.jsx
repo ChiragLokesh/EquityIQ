@@ -1,10 +1,11 @@
 import React from "react";
-import "./Testing.css";
+// import "./Testing.css";
 import Logo from "./logo.png";
 import { varsityData } from "./KnowledgeHubData";
+import { ModuleData } from "./module";
 import { useNavigate } from "react-router-dom";
 
-function Testing() {
+function Module() {
   const navigate = useNavigate();
 
   // Function to handle the search submission
@@ -31,11 +32,6 @@ function Testing() {
 
   return (
     <>
-      {/* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 10px; */}
       <div className="flex p-8 bg-white items-center justify-between">
         <div className="navbar-logo">
           <img src={Logo} alt="Your Company" />
@@ -56,41 +52,18 @@ function Testing() {
       </div>
       <div className="bg-white">
         <div className="heading">
-          {/* color: #ffffff;
-          font-weight: bolder;
-          font-size: 60px;
-          padding-top: 50px;
-          padding-left: 50px; */}
           <h1 className="text-black text-6xl font-extrabold pt-[50px] pl-[50px]">
-            Stock Market Education
+            01. Introduction to the Stock Markets
           </h1>
         </div>
-        {/* Subheading */}
         <div className="pb-[50px]">
           <h1 className="text-black text-4xl font-bold pl-[50px]">
-            Play the market to your favor
+            Learn the ins and outs
           </h1>
-          {/* subtitle */}
         </div>
-        <div className="cards">
-          <div className="card-grid">
-            {varsityData.map((data, index) => (
-              <div
-                className="card bg-gray-400"
-                onClick={openModule}
-                key={index}
-              >
-                <div className="container">
-                  <h2 className='text-right font-bold text-4xl' style={{color:data.color}}>
-                    <b>{data.num}</b>
-                  </h2>
-                  <h4 className="text">
-                    <b>{data.title}</b>
-                  </h4>
-                  <p className="text">{data.body}</p>
-                </div>
-              </div>
-            ))}
+        <div className="content">
+          <div className="text-justify px-[150px]">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga minus aperiam enim accusantium? Cumque, sapiente natus iste saepe quos perspiciatis architecto minus veniam excepturi laudantium quibusdam quis deserunt error eos officia exercitationem pariatur, facere placeat ex vitae dignissimos tempore velit. Ipsa necessitatibus odit facilis rerum harum et dicta consequatur omnis amet sed perferendis praesentium ut, voluptas sapiente magni voluptates tenetur consequuntur quibusdam quaerat soluta aspernatur ipsum dolore exercitationem. In amet doloremque ipsa nostrum facere recusandae velit incidunt animi laboriosam aut atque minima enim perferendis ab reprehenderit nesciunt eos placeat, perspiciatis sequi beatae soluta quasi! Aspernatur est cum aut ullam natus.
           </div>
         </div>
       </div>
@@ -98,4 +71,4 @@ function Testing() {
   );
 }
 
-export default Testing;
+export default Module;

@@ -1,10 +1,10 @@
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;  /*Color for NavBar*/
+    background-color: #ffffff;  
     padding: 10px;
-  }
+  } */
 
   .navbar-logo {
     flex: 1; /*IDK*/
@@ -12,6 +12,10 @@
 
   /* this doesn't work. Trying to change entire screen white. */
   /* .heading{
+    background-color: #ffffff;
+  } */
+
+  /* .body{
     background-color: #ffffff;
   } */
 

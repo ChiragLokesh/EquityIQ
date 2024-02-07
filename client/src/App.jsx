@@ -11,6 +11,7 @@ import KnowHub from './view/KnowHub/KnowHub'
 import Test from './view/KnowHub/test'
 import StockMarket from './view/KnowHub/module1/StockMarket'
 import Testing from './view/Test/Testing'
+import Module from './view/Test/Module/module'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +29,7 @@ function App() {
       <Route path='/market-data' element={<MarketData />} />
       <Route path='/test' element={<Test/>} />
       <Route path='/testing' element={<Testing/>} />
+      <Route path='/module' element={<Module/>} />
       <Route path='/' element={<LoginPage/>} />
     </Routes>
   )
