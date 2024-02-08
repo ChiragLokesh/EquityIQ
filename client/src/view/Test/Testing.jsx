@@ -22,38 +22,16 @@ function Testing() {
     }
   };
 
-  const openModule = () => {
+  const openModule = (id) => {
     // Define the logic for opening a module or handle the click event
     console.log("Open module logic");
+    navigate('/learn/' + id)
   };
 
   console.log(varsityData);
 
   return (
     <>
-      {/* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 10px; */}
-      <div className="flex p-8 bg-white items-center justify-between">
-        <div className="navbar-logo">
-          <img src={Logo} alt="Your Company" />
-        </div>
-        <div className="navbar-links">
-          <h2 onClick={login}>Home</h2>
-          <h2 onClick={login}>Explore</h2>
-          <h2 onClick={login}>KnowledgeHub</h2>
-          <h2 onClick={login}>News</h2>
-          <h2 onClick={login}>Trending</h2>
-        </div>
-        <div className="navbar-search">
-          <input type="text" placeholder="Search..." />
-          <button type="submit" onClick={handleSearch}>
-            Search
-          </button>
-        </div>
-      </div>
       <div className="bg-white">
         <div className="heading">
           {/* color: #ffffff;
@@ -77,7 +55,7 @@ function Testing() {
             {varsityData.map((data, index) => (
               <div
                 className="card bg-gray-400"
-                onClick={openModule}
+                onClick={() => openModule(data.num)}
                 key={index}
               >
                 <div className="container">
