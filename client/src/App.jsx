@@ -13,6 +13,7 @@ import StockMarket from "./view/KnowHub/module1/StockMarket";
 import Testing from "./view/Test/Testing";
 import Module from "./view/Test/Module/module";
 import Navbar from "./view/Navbar/Navbar";
+import Search from "./view/Search/search"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,14 +25,15 @@ function App() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
 
-      <Route path="/" element={<Navbar />}>
+      <Route path="/" element={<Navbar/>}>
         <Route path="/learn/:id" element={<Module/>}/>
         <Route path="/stockmarket" element={<StockMarket />} />
         <Route path="/knowledge" element={<KnowHub />} />
         <Route path="/market-data" element={<MarketData />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/test" element={<Test/>} />
         <Route path="/testing" element={<Testing />} />
-        <Route path="/module" element={<Module />} />
+        <Route path="/module" element={<Module/>} />
+        <Route path="/search" element={<Search/>} />
       </Route>
     </Routes>
   );
