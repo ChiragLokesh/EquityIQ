@@ -12,7 +12,8 @@ function Navbar() {
   };
   return (
     <>
-      <div className="flex p-2 bg-white items-center justify-between">
+      <div className="flex p-2
+       bg-white h-[10vh] items-center justify-between">
         <div className="navbar-logo">
           <img src={Logo} alt="Your Company" />
         </div>

@@ -24,8 +24,17 @@ function Search() {
 //   console.log(article);
 
   return (
-    <div className="bg-white">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla vel corrupti at fuga mollitia excepturi autem itaque, voluptate assumenda dolor necessitatibus quam possimus architecto perspiciatis. Quisquam ab vitae repudiandae voluptatibus?
+    <div className="bg-white
+    ">
+      <div className="flex justify-center h-[90vh]">
+        <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full">
+          <input type="text" className="px-4 py-2 w-80 rounded-l-full" placeholder="Search..."/>
+          <button className="px-4 border-l border-gray-300 rounded-r-full">
+          {/* Icon or text goes here */}
+            Search
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
