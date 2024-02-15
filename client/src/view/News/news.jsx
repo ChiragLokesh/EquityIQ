@@ -24,18 +24,8 @@ function Search() {
 //   console.log(article);
 
   return (
-    // Need to add more padding to the top of the search bar
     <div className="bg-white">
-      {/* Added padding-top to the container */}
-      <div className="flex justify-center h-[90vh] pt-10 lg:pt-20">
-        <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full">
-          <input type="text" className="px-4 py-2 w-80 rounded-l-full" placeholder="Search..."/>
-          <button className="px-4 border-l border-gray-300 rounded-r-full">
-            {/* Icon or text goes here */}
-            Search
-          </button>
-        </div>
-      </div>
+      
     </div>
   );
 }
