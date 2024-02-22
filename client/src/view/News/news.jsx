@@ -1,50 +1,62 @@
-import React, { useState } from "react";
-// import "./Testing.css";
-// import { varsityData } from "./KnowledgeHubData";
-// import { ModuleData } from "./moduleData";
-import { useNavigate, useParams } from "react-router-dom";
-// import Navbar from "../../Navbar/Navbar";
-import NewsAPI from "newsapi";
+import { useState } from "react";
+import { DateTime } from "luxon";
 
 function News() {
-  const navigate = useNavigate();
-  // const params = useParams();
   const [news, setNews] = useState();
 
-  // console.log(params.id);
-
-  function getObjectById(array, id) {
-    for (const obj of array) {
-      if (obj.num === id) {
-        return obj;
-      }
-    }
-    return null;
-  }
-
   async function getNews() {
-    console.log("here");
-    let query = 'BitCoin'
+    let query = "Mahindra";
     const response = await fetch(
       `https://newsapi.org/v2/top-headlines?q=${query}&category=business&country=in&apiKey=18081627bdf74e9381f2dc41b99e3287`
     );
+
     const news = await response.json();
-    console.log(news);
     setNews(news);
   }
 
+  const formattedDate = (date) => {
+    let timestamp = DateTime.fromISO(date).toFormat("MM/dd/yyyy");
+    return timestamp;
+  };
+
   return (
-    <div className="bg-white flex flex-col  ">
-      <button onClick={getNews} className="button">Get me the news</button>
+    <div className="bg-white flex flex-col h-screen gap-16">
+      <button onClick={getNews} className="button">
+        Get me the news
+      </button>
 
       {news ? (
-        <table>
-          {news.articles.map((item) => (
-              <tr>{item.title}</tr>
+        <table className="w-1/2 mx-auto table-auto">
+          <tbody>
+            {news.articles.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  <a href={item.url}>
+                    <div className="flex flex-row gap-8 p-2">
+                      <div>
+                        <img
+                          src={item.urlToImage}
+                          className="h-24 w-64 max-w-64"
+                          alt="News Thumbnail"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <div className="flex flex-row gap-2 text-xs">
+                          <h3 className="font-bold">{item.author}</h3>
+                          <h3>O</h3>
+                          <h3>{formattedDate(item.publishedAt)}</h3>
+                        </div>
+                        <h3>{item.title}</h3>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+              </tr>
             ))}
+          </tbody>
         </table>
       ) : (
-        <>No News...</>
+        <h1 className="mx-auto">No News...</h1>
       )}
     </div>
   );
