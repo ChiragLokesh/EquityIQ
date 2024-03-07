@@ -15,6 +15,7 @@ function News() {
     try {
       const response = await fetch(
         `https://newsapi.org/v2/top-headlines?q=${query}&category=business&country=in&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
+        // VITE_NEWS_API_KEY = 18081627bdf74e9381f2dc41b99e3287
       );
 
       console.log(response);
