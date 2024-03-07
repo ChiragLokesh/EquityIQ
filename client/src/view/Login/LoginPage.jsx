@@ -54,7 +54,7 @@ function LoginPage() {
       console.log('Login with Google successful');
 
       // Now you can navigate or perform additional actions if needed
-      navigate('/LoginSuccessPage');
+      navigate('/');
 
       // Clear the error message
       setErrorMessage('');
