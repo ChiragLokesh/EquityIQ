@@ -38,6 +38,7 @@ function News() {
     getNews();
   };
 
+  // Need to do formatting
   return (
     <div className="bg-white flex flex-col h-screen gap-16">
       <form onSubmit={handleSearchSubmit} className="flex justify-center h-[20vh] pt-2 lg:pt-5">
