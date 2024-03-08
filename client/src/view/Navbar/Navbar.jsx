@@ -20,14 +20,13 @@ function Navbar() {
   };
   return (
     <>
-      <div className="flex p-2
-       bg-white h-[10vh] items-center justify-between">
+      <div className="flex p-2 bg-white h-[10vh] items-center justify-between">
         <div className="navbar-logo">
           <img src={Logo} alt="Your Company" />
         </div>
         {/* Remove the 'flex justify-center' in div and the 'mx-4' in the h2 tags */}
         <div className="navbar-links flex justify-center">
-          <h2 className="mx-4" onClick={() => handleNavigation('/')}>Home</h2>
+          <h2 className="mx-4" onClick={() => handleNavigation('/Home')}>Home</h2>
           <h2 className="mx-4" onClick={() => handleNavigation('/')}>Explore</h2>
           <h2 className="mx-4" onClick={() => handleNavigation('/testing')}>KnowledgeHub</h2>
           <h2 className="mx-4" onClick={() => handleNavigation('/news')}>News</h2>

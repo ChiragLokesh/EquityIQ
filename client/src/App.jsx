@@ -15,6 +15,7 @@ import Module from "./view/Test/Module/module";
 import Navbar from "./view/Navbar/Navbar";
 import Search from "./view/Search/search"
 import News from "./view/News/news";
+import Home from "./view/Home/Home"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/module" element={<Module/>} />
         <Route path="/search" element={<Search/>} />
         <Route path="/news" element={<News />} />
+        <Route path="/home" element={<Home />} />
       </Route>
     </Routes>
   );
