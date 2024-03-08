@@ -54,7 +54,7 @@ function Testing() {
           <div className="card-grid">
             {varsityData.map((data, index) => (
               <div
-                className="card bg-gray-400"
+                className="card bg-gray-500 w-10/12"
                 onClick={() => openModule(data.num)}
                 key={index}
               >
