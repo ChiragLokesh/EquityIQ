@@ -1,15 +1,11 @@
 import React from "react";
-// import "./Testing.css";
 import { varsityData } from "./KnowledgeHubData";
-import { ModuleData } from "./moduleData";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../Navbar/Navbar";
 
 function Module() {
   const navigate = useNavigate();
   const params = useParams();
-
-  console.log(params.id);
 
   function getObjectById(array, id) {
     for (const obj of array) {
@@ -21,10 +17,12 @@ function Module() {
   }
 
   let article = getObjectById(varsityData, params.id);
-  console.log(article);
+
+  // Split the body text into sentences
+  const sentences = article.body.split("\n");
 
   return (
-    <>
+    <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
       <div className="bg-white">
         <div className="heading">
           <h1 className="text-black text-6xl font-extrabold pt-[50px] pl-[50px]">
@@ -37,10 +35,15 @@ function Module() {
           </h1>
         </div>
         <div className="content">
-          <div className="text-justify px-[150px]">{article.body}</div>
+          {/* Render each sentence as a separate paragraph */}
+          {sentences.map((sentence, index) => (
+            <p key={index} className="text-justify px-[300px]">
+              {sentence}
+            </p>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
