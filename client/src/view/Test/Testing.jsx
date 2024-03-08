@@ -32,7 +32,7 @@ function Testing() {
 
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-white pb-28">
         <div className="heading">
           {/* color: #ffffff;
           font-weight: bolder;

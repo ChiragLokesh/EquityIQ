@@ -29,10 +29,9 @@ function Search() {
       {/* Added padding-top to the container */}
       <div className="flex justify-center h-[90vh] pt-10 lg:pt-20">
         <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full">
-          <input type="text" className="px-4 py-2 w-80 rounded-l-full" placeholder="Search..."/>
-          <button className="px-4 border-l border-gray-300 rounded-r-full">
-            {/* Icon or text goes here */}
-            Search
+          <input type="text" className="px-4 py-2 w-full rounded-l-full" placeholder="Search..."/>
+          <button className="px-6 border-l border-gray-300 rounded-r-full">
+            <img src ="C:\Users\adith\OneDrive\Documents\GitHub\EquityIQ\client\src\view\Search\icon\search.png" alt="icon" className="w-6 h-6"/>
           </button>
         </div>
       </div>

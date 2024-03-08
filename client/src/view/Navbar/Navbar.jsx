@@ -25,12 +25,13 @@ function Navbar() {
         <div className="navbar-logo">
           <img src={Logo} alt="Your Company" />
         </div>
-        <div className="navbar-links">
-          <h2 onClick={() => handleNavigation('/')}>Home</h2>
-          <h2 onClick={() => handleNavigation('/')}>Explore</h2>
-          <h2 onClick={() => handleNavigation('/testing')}>KnowledgeHub</h2>
-          <h2 onClick={() => handleNavigation('/news')}>News</h2>
-          <h2 onClick={() => handleNavigation('/')}>Trending</h2>
+        {/* Remove the 'flex justify-center' in div and the 'mx-4' in the h2 tags */}
+        <div className="navbar-links flex justify-center">
+          <h2 className="mx-4" onClick={() => handleNavigation('/')}>Home</h2>
+          <h2 className="mx-4" onClick={() => handleNavigation('/')}>Explore</h2>
+          <h2 className="mx-4" onClick={() => handleNavigation('/testing')}>KnowledgeHub</h2>
+          <h2 className="mx-4" onClick={() => handleNavigation('/news')}>News</h2>
+          <h2 className="mx-4" onClick={() => handleNavigation('/')}>Trending</h2>
         </div>
         <div className="navbar-search">
           <input type="text" placeholder="Search..." />

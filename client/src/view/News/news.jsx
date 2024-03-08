@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DateTime } from "luxon";
+import Search from "src/assets/search.png";
 
 function News() {
   const [news, setNews] = useState(null);
@@ -43,16 +44,16 @@ function News() {
   return (
     <div className="bg-white flex flex-col h-screen gap-16">
       <form onSubmit={handleSearchSubmit} className="flex justify-center h-[20vh] pt-2 lg:pt-5">
-        <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full">
+        <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full px-1">
           <input
             type="text"
             className="w-80 rounded-l-full"
-            placeholder="Search..."
+            placeholder="Search articles"
             onChange={handleSearchChange}
             value={query}
           />
-          <button type="submit" className="border-l border-gray-300 rounded-r-full">
-            Search
+          <button type="submit" className="border-l border-gray-300 rounded-r-full px-4 py-3">
+            <img src={Search} alt="search" className="w-6 h-6"/>
           </button>
         </div>
       </form>
@@ -75,7 +76,7 @@ function News() {
                       <div className="flex flex-col gap-2">
                         <div className="flex flex-row gap-2 text-xs">
                           <h3 className="font-bold">{item.author}</h3>
-                          <h3>O</h3>
+                          <h3>|</h3>
                           <h3>{formattedDate(item.publishedAt)}</h3>
                         </div>
                         <h3>{item.title}</h3>
