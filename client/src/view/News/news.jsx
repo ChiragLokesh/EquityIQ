@@ -15,8 +15,10 @@ function News() {
     }
     try {
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?q=${query}&category=business&country=in&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
-        // VITE_NEWS_API_KEY = 18081627bdf74e9381f2dc41b99e3287 
+        `https://newsapi.org/v2/top-headlines?q=${query}&category=business&country=in&apiKey=${
+          import.meta.env.VITE_NEWS_API_KEY
+        }`
+        // VITE_NEWS_API_KEY = 18081627bdf74e9381f2dc41b99e3287
       );
 
       console.log(response);
@@ -42,8 +44,11 @@ function News() {
 
   // Need to do formatting
   return (
-    <div className="bg-white flex flex-col h-screen gap-16">
-      <form onSubmit={handleSearchSubmit} className="flex justify-center h-[20vh] pt-2 lg:pt-5">
+    <div className="bg-white flex flex-col h-screen gap-16 overflow-y-auto">
+      <form
+        onSubmit={handleSearchSubmit}
+        className="flex justify-center h-[20vh] pt-2 lg:pt-5"
+      >
         <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full px-1">
           <input
             type="text"
@@ -52,8 +57,11 @@ function News() {
             onChange={handleSearchChange}
             value={query}
           />
-          <button type="submit" className="border-l border-gray-300 rounded-r-full px-4 py-3">
-            <img src={Search} alt="search" className="w-6 h-6"/>
+          <button
+            type="submit"
+            className="border-l border-gray-300 rounded-r-full px-4 py-3"
+          >
+            <img src={Search} alt="search" className="w-6 h-6" />
           </button>
         </div>
       </form>
