@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import Logo from './logo.png';
-import { auth } from '../../firebase/firebase';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import Logo from "./logo.png";
+import { auth } from "../../firebase/firebase";
 
 function SignUpPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -21,24 +21,24 @@ function SignUpPage() {
       }
 
       await createUserWithEmailAndPassword(auth, email, password);
-      console.log('Sign Up Successful');
+      console.log("Sign Up Successful");
 
       // Set the success message
-      setSuccessMessage('User registered successfully');
+      setSuccessMessage("User registered successfully");
 
       // Clear the error message
-      setError('');
+      setError("");
 
       // You can redirect to the login page or any other page after successful signup.
       // In this case, redirecting to the login page.
     } catch (error) {
-      console.error('Sign Up Error:', error.message);
+      console.error("Sign Up Error:", error.message);
 
       // Display an error message to the user
       setError(error.message);
 
       // Clear the success message
-      setSuccessMessage('');
+      setSuccessMessage("");
     }
   };
 
@@ -55,9 +55,11 @@ function SignUpPage() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white dark:bg-gray-800 px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleSubmit}>
-              
               <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 dark:text-white text-gray-900">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 dark:text-white text-gray-900"
+                >
                   Email address
                 </label>
                 <div className="mt-2">
@@ -74,7 +76,10 @@ function SignUpPage() {
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium leading-6 dark:text-white text-gray-900">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 dark:text-white text-gray-900"
+                >
                   Password
                 </label>
                 <div className="mt-2">
@@ -91,7 +96,10 @@ function SignUpPage() {
               </div>
 
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium leading-6 dark:text-white text-gray-900">
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-sm font-medium leading-6 dark:text-white text-gray-900"
+                >
                   Confirm Password
                 </label>
                 <div className="mt-2">
@@ -123,16 +131,17 @@ function SignUpPage() {
               )}
 
               {error && (
-                <div className="text-red-500 text-center mb-4">
-                  {error}
-                </div>
+                <div className="text-red-500 text-center mb-4">{error}</div>
               )}
             </form>
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Already a member?{' '}
-            <Link to="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            Already a member?{" "}
+            <Link
+              to="/login"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
               Sign in now
             </Link>
           </p>

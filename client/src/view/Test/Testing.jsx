@@ -25,7 +25,7 @@ function Testing() {
   const openModule = (id) => {
     // Define the logic for opening a module or handle the click event
     console.log("Open module logic");
-    navigate('/learn/' + id)
+    navigate("/learn/" + id);
   };
 
   console.log(varsityData);
@@ -54,12 +54,15 @@ function Testing() {
           <div className="card-grid">
             {varsityData.map((data, index) => (
               <div
-                className="card bg-gray-500 w-10/12"
+                className="card bg-gray-400 w-10/12"
                 onClick={() => openModule(data.num)}
                 key={index}
               >
                 <div className="container">
-                  <h2 className='text-right font-bold text-4xl' style={{color:data.color}}>
+                  <h2
+                    className="text-right font-bold text-4xl"
+                    style={{ color: data.color }}
+                  >
                     <b>{data.num}</b>
                   </h2>
                   <h4 className="text">
