@@ -1,3 +1,4 @@
+import pic from "src/assets/stocks.jpg"
 export const varsityData = [
   {
     num: "01",

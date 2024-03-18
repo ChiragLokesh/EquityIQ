@@ -2,7 +2,8 @@ import Stocks from "src/assets/stocks.jpg";
 const Home = () => {
   return (
     <div>
-        <div className="relative bg-slate-900 min-h-screen flex-items-center justify-center">
+        <div className="relative bg-slate-
+        900 min-h-screen flex-items-center justify-center">
             <img src={Stocks} alt="Stocks" className="absolute inset-0 w-full h-full object-cover opacity-75" />
             <div className="absolute inset-0 flex flex-col pl-10 justify-center">
                 <h1 className="text-white font-extrabold text-5xl mb-4">Welcome to EquityIQ</h1>
