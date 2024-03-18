@@ -2,6 +2,7 @@ import React from "react";
 import { varsityData } from "./KnowledgeHubData";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../Navbar/Navbar";
+import pic from "src/assets/stocks.jpg";
 
 function Module() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function Module() {
           <h1 className="text-black text-4xl font-bold pl-[50px]">
             {article.subtitle}
           </h1>
+          <img src={pic} alt="pic" />
         </div>
         <div className="content">
           {/* Render each sentence as a separate paragraph */}
