@@ -11,6 +11,7 @@ import Module from "./view/Test/Module/module";
 import Navbar from "./view/Navbar/Navbar";
 import Search from "./view/Search/search"
 import News from "./view/News/news";
+import Intro from "./view/Test/Intro/Intro"
 import Home from "./view/Home/Home"
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/search" element={<Search/>} />
         <Route path="/news" element={<News />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/intro" element={<Intro />} />
       </Route>
     </Routes>
   );
