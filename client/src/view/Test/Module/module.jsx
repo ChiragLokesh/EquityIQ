@@ -8,44 +8,17 @@ import pic1 from "src/assets/ch1-2.jpg";
 import pic2 from "src/assets/ch1-3.png";
 
 function Module() {
-  const params = useParams();
-  const [article, setArticle] = useState(null);
-
-  useEffect(() => {
-    const getObjectById = (array, id) => {
-      for (const obj of array) {
-        if (obj.num === params.id) {
-          return obj;
-        }
-      }
-      return null;
-    };
-
-    const fetchArticle = () => {
-      const foundArticle = getObjectById(varsityData, params.id);
-      setArticle(foundArticle);
-    };
-
-    fetchArticle();
-  }, [params.id]);
-
-  if (!article) {
-    return <div>Loading...</div>;
-  }
-
-  const sentences = article.body.split("\n");
-
   return (
     <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
       <div className="bg-white">
         <div className="heading">
           <h1 className="text-black text-6xl font-extrabold pt-[50px] pl-[50px]">
-            {article.num}. {article.title}
+            {/* {article.num}. {article.title} */}
           </h1>
         </div>
         <div className="pb-[50px]">
           <h1 className="text-black text-4xl font-bold pl-[50px]">
-            {article.subtitle}
+            {/* {article.subtitle} */}
           </h1>
         </div>
         <div
@@ -57,11 +30,6 @@ function Module() {
             flexDirection: "column",
           }}
         >
-          {sentences.map((sentence, index) => (
-            <p key={index} className="text-justify px-[300px]">
-              {sentence}
-            </p>
-          ))}
           <img
             src={pic}
             alt="pic"

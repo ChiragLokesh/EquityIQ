@@ -7,13 +7,12 @@ import LoginSuccessPage from "./view/Login/LoginSuccessPage";
 import SignUpPage from "./view/SignUp/SignUp";
 import ForgotPasswordPage from "./view/Login/forgotpassword";
 import Testing from "./view/Test/Testing";
-import Module from "./view/Test/Module/module";
+import Modules from "./view/Test/Module/module";
 import Navbar from "./view/Navbar/Navbar";
-import Search from "./view/Search/search"
+import Search from "./view/Search/search";
 import News from "./view/News/news";
-import Intro from "./view/Test/Intro/Intro"
-import Home from "./view/Home/Home"
-
+import Home from "./view/Home/Home";
+import Intro from "./view/Test/Intro/Intro";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -23,14 +22,13 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
-      <Route path="/" element={<Navbar/>}>
-        <Route path="/learn/1" element={<Module/>}/>
+      <Route path="/" element={<Navbar />}>
+        <Route path="/learn/01" element={<Intro />} />
+        <Route path="/learn/02" element={<Modules />} />
         <Route path="/testing" element={<Testing />} />
-        <Route path="/module" element={<Module/>} />
-        <Route path="/search" element={<Search/>} />
+        <Route path="/search" element={<Search />} />
         <Route path="/news" element={<News />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/intro" element={<Intro />} />
       </Route>
     </Routes>
   );
