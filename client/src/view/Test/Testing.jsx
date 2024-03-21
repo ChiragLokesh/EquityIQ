@@ -22,29 +22,24 @@ function Testing() {
           Play the market to your favor
         </h1>
       </div>
-      <br></br>
-      <br></br>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 p-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10">
         {varsityData.map((data, index) => (
           <div
-            className="card bg-gray-400 rounded-lg cursor-pointer p-6"
+            className="card bg-gray-400 rounded-lg cursor-pointer"
             onClick={() => openModule(data.num)}
             key={index}
           >
             <div className="container p-4">
               <h2
-                className="text-right font-bold text-5xl"
+                className="text-right font-bold text-4xl"
                 style={{ color: data.color }}
               >
                 <b>{data.num}</b>
               </h2>
-
-              <h4 className="text-2xl">
+              <h4 className="text">
                 <b>{data.title}</b>
               </h4>
-
-              <br />
-              <p className="text-lg">{data.body}</p>
+              <p className="text">{data.body}</p>
             </div>
           </div>
         ))}
