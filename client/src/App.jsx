@@ -8,7 +8,6 @@ import SignUpPage from "./view/SignUp/SignUp";
 import ForgotPasswordPage from "./view/Login/forgotpassword";
 import Testing from "./view/Test/Testing";
 import Navbar from "./view/Navbar/Navbar";
-import Search from "./view/Search/search";
 import News from "./view/News/news";
 import Home from "./view/Home/Home";
 import M1 from "./view/Test/mc/M1";
@@ -25,14 +24,13 @@ function App() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path="/" element={<Navbar />}>
-        <Route path="/learn/01" element={<M1 />} />
-        <Route path="/learn/02" element={<M2 />} />
-        <Route path="/learn/03" element={<M3 />} />
-        <Route path="/learn/04" element={<M4 />} />
-        <Route path="/testing" element={<Testing />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/home" element={<Home />} />
+      <Route path="/learn/01" element={<M1 />} />
+      <Route path="/learn/02" element={<M2 />} />
+      <Route path="/learn/03" element={<M3 />} />
+      <Route path="/learn/04" element={<M4 />} />
+      <Route path="/testing" element={<Testing />} />
+      <Route path="/news" element={<News />} />
+      <Route path="/home" element={<Home />} />      
       </Route>
     </Routes>
   );

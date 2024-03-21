@@ -45,9 +45,14 @@ function News() {
   // Need to do formatting
   return (
     <div className="bg-white flex flex-col h-screen gap-16 overflow-y-auto">
+      <div className="flex justify-center">
+        <h2 className="text-black font-medium text-xl pt-10">
+          Search for articles based on keywords
+        </h2>
+      </div>
       <form
         onSubmit={handleSearchSubmit}
-        className="flex justify-center h-[20vh] pt-2 lg:pt-5"
+        className="flex justify-center h-[20vh]"
       >
         <div className="flex items-center justify-center border-2 border-gray-300 h-fit rounded-full px-1">
           <input
