@@ -7,12 +7,13 @@ import LoginSuccessPage from "./view/Login/LoginSuccessPage";
 import SignUpPage from "./view/SignUp/SignUp";
 import ForgotPasswordPage from "./view/Login/forgotpassword";
 import Testing from "./view/Test/Testing";
-import Modules from "./view/Test/Module/module";
 import Navbar from "./view/Navbar/Navbar";
 import Search from "./view/Search/search";
 import News from "./view/News/news";
 import Home from "./view/Home/Home";
-import Intro from "./view/Test/Intro/Intro";
+import M1 from "./view/Test/mc/M1";
+import M2 from "./view/Test/mc/M2";
+import M3 from "./view/Test/mc/M3";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -23,8 +24,9 @@ function App() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path="/" element={<Navbar />}>
-        <Route path="/learn/01" element={<Intro />} />
-        <Route path="/learn/02" element={<Modules />} />
+        <Route path="/learn/01" element={<M1 />} />
+        <Route path="/learn/02" element={<M2 />} />
+        <Route path="/learn/03" element={<M3 />} />
         <Route path="/testing" element={<Testing />} />
         <Route path="/search" element={<Search />} />
         <Route path="/news" element={<News />} />
