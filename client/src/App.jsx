@@ -14,6 +14,7 @@ import Home from "./view/Home/Home";
 import M1 from "./view/Test/mc/M1";
 import M2 from "./view/Test/mc/M2";
 import M3 from "./view/Test/mc/M3";
+import M4 from "./view/Test/mc/M4";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/learn/01" element={<M1 />} />
         <Route path="/learn/02" element={<M2 />} />
         <Route path="/learn/03" element={<M3 />} />
+        <Route path="/learn/04" element={<M4 />} />
         <Route path="/testing" element={<Testing />} />
         <Route path="/search" element={<Search />} />
         <Route path="/news" element={<News />} />
