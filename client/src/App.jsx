@@ -14,12 +14,14 @@ import M1 from "./view/Test/mc/M1";
 import M2 from "./view/Test/mc/M2";
 import M3 from "./view/Test/mc/M3";
 import M4 from "./view/Test/mc/M4";
+// import Cur from "./view/MarketData/curprice";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      {/* <Route path="/cur" element={<Cur />} /> */}
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
