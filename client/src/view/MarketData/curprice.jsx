@@ -1,47 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
 
-function StockPriceDisplay() {
-  const [stockData, setStockData] = useState(null);
-  const ticker = 'ASHOKLEY'; // Replace with your desired stock ticker
+function CurrentPrice() {
+  const [stocks, setStocks] = useState([]);
 
   useEffect(() => {
-    const fetchStockData = async () => {
+    async function fetchStockData() {
       try {
-        const response = await axios.get(`https://your-python-api-url/${ticker}`);
-        setStockData(response.data);
+        const response = await fetch("http://127.0.0.1:5000/api/stocks");
+        if (!response.ok) {
+          throw new Error("Failed to fetch stock data");
+        }
+        const data = await response.json();
+        setStocks(data);
+        console.log(data);
       } catch (error) {
-        console.error('Error fetching stock data:', error);
+        console.error("Error fetching stock data:", error);
       }
-    };
+    }
 
     fetchStockData();
-  }, [ticker]);
+  }, []);
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-4">Stock Price Display</h1>
-      {stockData !== null ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h2 className="text-lg font-semibold">Company Name</h2>
-            <p className="text-gray-700">{stockData.companyName}</p>
+    <div>
+      <h1>Stock Prices</h1>
+      <div id="stockCards" style={{ display: "flex", flexWrap: "wrap" }}>
+        {Object.entries(stocks).map(([symbol, price]) => (
+          <div
+            className="card"
+            key={symbol}
+            style={{
+              margin: "10px",
+              padding: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              minWidth: "200px",
+            }}
+          >
+            <h2>{symbol}</h2>
+            <p>Price: {price}</p>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h2 className="text-lg font-semibold">Ticker Symbol</h2>
-            <p className="text-gray-700">{stockData.ticker}</p>
-          </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h2 className="text-lg font-semibold">Current Price</h2>
-            <p className="text-gray-700">{stockData.price}</p>
-          </div>
-          {/* Add more grid items for additional information */}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+        ))}
+      </div>
     </div>
   );
 }
 
-export default StockPriceDisplay;
+export default CurrentPrice;

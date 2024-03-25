@@ -1,9 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify
+from flask_cors import CORS  # Import CORS from flask_cors
 import requests
 from bs4 import BeautifulSoup
 import logging
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
@@ -21,8 +23,8 @@ def get_stock_price(ticker):
         logging.error(f"Error fetching stock price: {e}")
         return None
 
-@app.route("/")
-def index():
+@app.route("/api/stocks")
+def get_stock_prices():
     stock_symbols = ['ASHOKLEY', 'SBIN', 'TCS', 'INFY', 'RELIANCE', 'HDFCBANK', 'ICICIBANK', 'HINDUNILVR', 'KOTAKBANK', 'HDFC', 'ITC']
     stock_prices = {}
 
@@ -30,7 +32,7 @@ def index():
     for symbol in stock_symbols:
         stock_prices[symbol] = get_stock_price(symbol)
 
-    return render_template('index.html', stock_prices=stock_prices)
+    return jsonify(stock_prices)
 
 if __name__ == "__main__":
     app.run(debug=True)
