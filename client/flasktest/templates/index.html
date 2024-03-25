@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prices</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Stock Prices</h1>
+    <div id="stockCards">
+        {% for symbol, price in stock_prices.items() %}
+        <div class="card">
+            <h2>{{ symbol }}</h2>
+            <p>Price: {{ price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

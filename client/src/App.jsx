@@ -24,13 +24,13 @@ function App() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path="/" element={<Navbar />}>
-      <Route path="/learn/01" element={<M1 />} />
-      <Route path="/learn/02" element={<M2 />} />
-      <Route path="/learn/03" element={<M3 />} />
-      <Route path="/learn/04" element={<M4 />} />
-      <Route path="/testing" element={<Testing />} />
-      <Route path="/news" element={<News />} />
-      <Route path="/home" element={<Home />} />      
+        <Route path="/learn/01" element={<M1 />} />
+        <Route path="/learn/02" element={<M2 />} />
+        <Route path="/learn/03" element={<M3 />} />
+        <Route path="/learn/04" element={<M4 />} />
+        <Route path="/testing" element={<Testing />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/home" element={<Home />} />
       </Route>
     </Routes>
   );
