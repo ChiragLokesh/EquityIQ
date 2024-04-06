@@ -15,7 +15,8 @@ import M1 from "./view/Test/mc/M1";
 import M2 from "./view/Test/mc/M2";
 import M3 from "./view/Test/mc/M3";
 import M4 from "./view/Test/mc/M4";
-import R1 from "./view/MarketData/ratios";
+import StockList from "./view/MarketData/StockList";
+import StockDetail from "./view/MarketData/StockDetail";
 import CurrentPrice from "./view/MarketData/curprice";
 function App() {
   const [count, setCount] = useState(0);
@@ -25,7 +26,8 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
-      <Route path="/ratios" element={<R1 />} />
+      <Route path="/stock" element={<StockList />} />
+      <Route path="/stock/:name" element={<StockDetail />} />
       <Route path="/LoginSuccessPage" element={<LoginSuccessPage />} />
       <Route path="/" element={<Navbar />}>
         <Route path="/learn/01" element={<M1 />} />
