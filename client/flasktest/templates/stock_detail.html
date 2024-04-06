@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ stock.NAME }} Ratios</title>
+</head>
+
+<body>
+    <h1>{{ stock.NAME }} Ratios</h1>
+    <ul>
+        <li>P/E Ratio: {{ stock['P/E RATIO'] }}</li>
+        <li>P/B Ratio: {{ stock['P/B RATIO'] }}</li>
+        <li>EPS: {{ stock.EPS }}</li>
+        <li>Dividend Yield(%): {{ stock['DIV YEILD(%)'] }}</li>
+        <!-- Add more ratios as needed -->
+    </ul>
+</body>
+
+</html>
