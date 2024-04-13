@@ -17,6 +17,7 @@ import M1 from "./view/Test/mc/M1";
 import M2 from "./view/Test/mc/M2";
 import M3 from "./view/Test/mc/M3";
 import M4 from "./view/Test/mc/M4";
+import Filter from "./view/filter/filtering";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -39,6 +40,7 @@ function App() {
         <Route path="news" element={<News />} />
         <Route path="home" element={<Home />} />
         <Route path="explore" element={<Cur />} />
+        <Route path="filter" element={<Filter />} />
       </Route>
     </Routes>
   );

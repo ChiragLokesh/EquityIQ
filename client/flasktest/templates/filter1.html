@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        .slider-container {
+            margin-bottom: 20px;
+        }
+
+        .output {
+            margin-left: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Stock Filter</h1>
+    <form id="stockForm">
+        <div class="slider-container">
+            <label for="peMin">P/E Ratio:</label>
+            <input type="range" min="0" max="100" value="0" id="peMin"
+                oninput="updateOutput('peMinOutput', this.value)">
+            to
+            <input type="range" min="0" max="100" value="100" id="peMax"
+                oninput="updateOutput('peMaxOutput', this.value)">
+            <span id="peMinOutput" class="output">0</span> - <span id="peMaxOutput" class="output">100</span>
+        </div>
+        <div class="slider-container">
+            <label for="epsMin">EPS:</label>
+            <input type="range" min="0" max="50" value="0" id="epsMin"
+                oninput="updateOutput('epsMinOutput', this.value)">
+            to
+            <input type="range" min="0" max="50" value="50" id="epsMax"
+                oninput="updateOutput('epsMaxOutput', this.value)">
+            <span id="epsMinOutput" class="output">0</span> - <span id="epsMaxOutput" class="output">50</span>
+        </div>
+        <div class="slider-container">
+            <label for="divYieldMin">Dividend Yield (%):</label>
+            <input type="range" min="0" max="20" value="0" id="divYieldMin"
+                oninput="updateOutput('divYieldMinOutput', this.value)">
+            to
+            <input type="range" min="0" max="20" value="20" id="divYieldMax"
+                oninput="updateOutput('divYieldMaxOutput', this.value)">
+            <span id="divYieldMinOutput" class="output">0</span> - <span id="divYieldMaxOutput" class="output">20</span>
+        </div>
+        <div class="slider-container">
+            <label for="pbRatioMin">P/B Ratio:</label>
+            <input type="range" min="0" max="10" value="0" id="pbRatioMin"
+                oninput="updateOutput('pbRatioMinOutput', this.value)">
+            to
+            <input type="range" min="0" max="10" value="10" id="pbRatioMax"
+                oninput="updateOutput('pbRatioMaxOutput', this.value)">
+            <span id="pbRatioMinOutput" class="output">0</span> - <span id="pbRatioMaxOutput" class="output">10</span>
+        </div>
+        <button type="button" onclick="fetchStocks()">Filter Stocks</button>
+    </form>
+
+    <h2>Filtered Results:</h2>
+    <ul id="stockResults"></ul>
+
+    <script>
+        function updateOutput(id, value) {
+            document.getElementById(id).textContent = value;
+        }
+
+        function fetchStocks() {
+            var peMin = document.getElementById('peMin').value;
+            var peMax = document.getElementById('peMax').value;
+            var epsMin = document.getElementById('epsMin').value;
+            var epsMax = document.getElementById('epsMax').value;
+            var divYieldMin = document.getElementById('divYieldMin').value;
+            var divYieldMax = document.getElementById('divYieldMax').value;
+            var pbRatioMin = document.getElementById('pbRatioMin').value;
+            var pbRatioMax = document.getElementById('pbRatioMax').value;
+
+            var query = `peMin=${peMin}&peMax=${peMax}&epsMin=${epsMin}&epsMax=${epsMax}&divYieldMin=${divYieldMin}&divYieldMax=${divYieldMax}&pbRatioMin=${pbRatioMin}&pbRatioMax=${pbRatioMax}`;
+
+            fetch(`/api/stocks?${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const results = document.getElementById('stockResults');
+                    results.innerHTML = '';
+                    data.forEach(stock => {
+                        let item = document.createElement('li');
+                        item.textContent = `${stock.NAME} - P/E: ${stock['P/E RATIO']}, EPS: ${stock.EPS}, Dividend Yield: ${stock['DIV YEILD(%)']}%, P/B: ${stock['P/B RATIO']}`;
+                        results.appendChild(item);
+                    });
+                })
+                .catch(error => console.error('Error fetching stocks:', error));
+        }
+    </script>
+</body>
+
+</html>

@@ -38,8 +38,8 @@ function Navbar() {
           <h2 className="mx-4" onClick={() => handleNavigation("/news")}>
             News
           </h2>
-          <h2 className="mx-4" onClick={() => handleNavigation("/")}>
-            Trending
+          <h2 className="mx-4" onClick={() => handleNavigation("/filter")}>
+            Filter
           </h2>
         </div>
         <div className="navbar-search">
