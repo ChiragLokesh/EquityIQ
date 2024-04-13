@@ -30,4 +30,4 @@ def stock_detail(name):
     return render_template('stock_detail.html', stock=stock)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5001)
