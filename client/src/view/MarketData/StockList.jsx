@@ -1,40 +1,31 @@
-// StockList.jsx
-
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Import Link component for routing
 
 function StockList() {
   const [stocks, setStocks] = useState([]);
 
   useEffect(() => {
-    async function fetchStocks() {
-      try {
-        const response = await axios.get("/api/stocks");
-        if (Array.isArray(response.data)) {
-          setStocks(response.data);
-        } else {
-          console.error("Data received is not an array:", response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching stocks:", error);
-      }
-    }
-    fetchStocks();
+    fetch("http://localhost:5001/api/stocks") // Adjust the URL based on your setup
+      .then((response) => response.json())
+      .then((data) => setStocks(data))
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   return (
-    <div>
-      <div>
-        <h1>Stocks</h1>
-        <ul>
-          {stocks.map((stock, index) => (
-            <li key={index}>
-              <Link to={`/stock/${stock.NAME}`}>{stock.NAME}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="bg-gray-800 min-h-screen flex flex-col items-center justify-center">
+      <h1 className="text-xl font-bold text-white mb-4">Stock Ratios</h1>
+      <ul className="list-none">
+        {stocks.map((stock) => (
+          <li key={stock.NAME} className="mb-2">
+            <Link
+              to={`/stock/${stock.NAME}`}
+              className="text-white hover:text-blue-500 transition duration-300"
+            >
+              {stock.NAME}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

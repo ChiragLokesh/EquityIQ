@@ -1,10 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify
 import csv
+from flask_cors import CORS
+from urllib.parse import unquote
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all domains on all routes
 
 # Load data from the CSV file
-def load_data(filename):
+def load_data(filename="ratio stocks.csv"):
     data = []
     with open(filename, 'r') as file:
         reader = csv.DictReader(file)
@@ -13,21 +16,28 @@ def load_data(filename):
     return data
 
 # Define route for the home page
-@app.route('/')
+@app.route('/api/stocks')
 def index():
     # Load stock data from CSV
     stock_data = load_data('ratios stocks.csv')
-    return render_template('index1.html', stock_data=stock_data)
+    return jsonify(stock_data)  # Return JSON data
 
-
-# Define route for displaying individual stock ratios
-@app.route('/stock/<name>')
+@app.route('/api/v2/stocks/details/<path:name>')
 def stock_detail(name):
+    # Decode the URL-encoded name parameter
+    decoded_name = unquote(name)
+
     # Load stock data from CSV
     stock_data = load_data('ratios stocks.csv')
-    # Find the stock with the given name
-    stock = next((s for s in stock_data if s['NAME'] == name), None)
-    return render_template('stock_detail.html', stock=stock)
+
+    # Find the stock with the given name, assuming case-insensitive matching
+    stock = next((s for s in stock_data if s['NAME'].lower() == decoded_name.lower()), None)
+    
+    # Check if stock was found
+    if stock is None:
+        return jsonify({"error": "Stock not found"}), 404
+
+    return jsonify(stock)  
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5001)
+    app.run(debug=True, port=5001)
