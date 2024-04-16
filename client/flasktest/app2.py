@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 import pandas as pd
 import numpy as np
 
 app = Flask(__name__)
+CORS(app)  # Apply CORS to all routes and allow all origins
 
 def load_data(filename):
     try:
@@ -14,6 +16,7 @@ def load_data(filename):
         print(f"Failed to load data: {e}")
         return pd.DataFrame()  # Return an empty DataFrame if there's an error
 
+# Load your data here
 data = load_data('/Users/chiragreddy/Documents/EquityIQ/client/flasktest/ratios stocks.csv')
 
 @app.route('/')
@@ -53,7 +56,9 @@ def filter_stocks():
     if pb_ratio_max is not None:
         filtered_data = filtered_data[filtered_data['P/B RATIO'] <= pb_ratio_max]
 
-    result = filtered_data.to_dict(orient='records')
+    # Correct the column name for stock names from 'STOCK NAME' to 'NAME'
+    result = filtered_data[['NAME', 'P/E RATIO', 'EPS', 'DIV YEILD(%)', 'P/B RATIO']].to_dict(orient='records')
+    print(result)
     return jsonify(result)
 
 if __name__ == '__main__':

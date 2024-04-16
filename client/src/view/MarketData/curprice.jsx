@@ -1,11 +1,70 @@
 import React, { useState, useEffect } from "react";
 
+function StockPopup({ stockDetail, onClose }) {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        zIndex: "9999",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "60%",
+          backgroundColor: "#fff",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <h2>{stockDetail.NAME}</h2>
+        <ul>
+          <li>
+            <strong>P/B Ratio:</strong> {stockDetail["P/B RATIO"]}
+          </li>
+          <li>
+            <strong>P/E Ratio:</strong> {stockDetail["P/E RATIO"]}
+          </li>
+          <li>
+            <strong>EPS:</strong> {stockDetail["EPS"]}
+          </li>
+          <li>
+            <strong>DIV YEILD:</strong> {stockDetail["DIV YEILD(%)"]}
+          </li>
+        </ul>
+        <button
+          onClick={onClose}
+          style={{
+            marginTop: "20px",
+            padding: "10px 20px",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function CurrentPrice() {
   const [stocks, setStocks] = useState({});
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [selectedStock, setSelectedStock] = useState(null);
 
-  // Hardcoded for demonstration, but you might want to fetch these from your API
   const stockSymbols = [
     "ASHOKLEY",
     "SBIN",
@@ -65,6 +124,58 @@ function CurrentPrice() {
     "WIPRO",
   ];
 
+  const symbolToName = {
+    ASHOKLEY: "Ashok Leyland Ltd.",
+    SBIN: "State Bank of India (SBI)",
+    TCS: "Tata Consultancy Services Ltd. (TCS)",
+    INFY: "Infosys Ltd.",
+    RELIANCE: "Reliance Industries Ltd. (RIL)",
+    HDFCBANK: "HDFC Bank Ltd.",
+    ICICIBANK: "ICICI Bank Ltd.",
+    HINDUNILVR: "Hindustan Unilever Ltd. (HUL)",
+    KOTAKBANK: "Kotak Mahindra Bank Ltd.",
+    TATASTEEL: "Tata Steel Ltd.",
+    ITC: "ITC Ltd.",
+    LICI: "Life Insurance Corporation of India (LIC)",
+    ADANIPORTS: "Adani Ports and Special Economic Zone Ltd.",
+    ASIANPAINT: "Asian Paints Ltd.",
+    AXISBANK: "Axis Bank Ltd.",
+    "BAJAJ-AUTO": "Bajaj Auto Ltd.",
+    BAJFINANCE: "Bajaj Finance Ltd.",
+    BAJAJFINSV: "Bajaj Finserv Ltd.",
+    BPCL: "Bharat Petroleum Corporation Ltd. (BPCL)",
+    BHARTIARTL: "Bharti Airtel Ltd.",
+    BRITANNIA: "Britannia Industries Ltd.",
+    CIPLA: "Cipla Ltd.",
+    COALINDIA: "Coal India Ltd.",
+    DIVISLAB: "Divi's Laboratories Ltd.",
+    DRREDDY: "Dr. Reddy's Laboratories Ltd.",
+    EICHERMOT: "Eicher Motors Ltd.",
+    GRASIM: "Grasim Industries Ltd.",
+    HCLTECH: "HCL Technologies Ltd.",
+    HDFC: "Housing Development Finance Corporation Ltd. (HDFC)",
+    HEROMOTOCO: "Hero MotoCorp Ltd.",
+    HINDALCO: "Hindalco Industries Ltd.",
+    JSWSTEEL: "JSW Steel Ltd.",
+    INDUSINDBK: "IndusInd Bank Ltd.",
+    IOC: "Indian Oil Corporation Ltd. (IOCL)",
+    LT: "Larsen & Toubro Ltd. (L&T)",
+    MM: "Mahindra & Mahindra Ltd.",
+    MARUTI: "Maruti Suzuki India Ltd.",
+    NESTLEIND: "Nestle India Ltd.",
+    NTPC: "NTPC Ltd.",
+    ONGC: "Oil & Natural Gas Corporation Ltd. (ONGC)",
+    POWERGRID: "Power Grid Corporation of India Ltd.",
+    SHREECEM: "Shree Cement Ltd.",
+    SUNPHARMA: "Sun Pharmaceutical Industries Ltd.",
+    TATAMOTORS: "Tata Motors Ltd.",
+    TECHM: "Tech Mahindra Ltd.",
+    TITAN: "Titan Company Ltd.",
+    ULTRACEMCO: "UltraTech Cement Ltd.",
+    UPL: "UPL Ltd.",
+    WIPRO: "Wipro Ltd.",
+  };
+
   useEffect(() => {
     async function fetchStockData() {
       try {
@@ -74,7 +185,6 @@ function CurrentPrice() {
         }
         const data = await response.json();
         setStocks(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching stock data:", error);
       }
@@ -97,8 +207,26 @@ function CurrentPrice() {
     }
   };
 
-  const handleCardClick = (symbol) => {
-    alert(`You clicked on ${symbol} stock!`);
+  const handleCardClick = async (symbol) => {
+    try {
+      const companyName = symbolToName[symbol];
+      if (!companyName) {
+        throw new Error(`Company name not found for symbol: ${symbol}`);
+      }
+
+      const response = await fetch(
+        `http://localhost:5001/api/v2/stocks/details/${encodeURIComponent(
+          companyName
+        )}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch stock details");
+      }
+      const data = await response.json();
+      setSelectedStock(data);
+    } catch (error) {
+      console.error("Error fetching stock detail:", error);
+    }
   };
 
   const handleSearchChange = (e) => {
@@ -116,6 +244,10 @@ function CurrentPrice() {
     setSearch(value);
     setSuggestions([]);
     fetchSpecificStockData(value);
+  };
+
+  const closePopup = () => {
+    setSelectedStock(null);
   };
 
   return (
@@ -241,6 +373,9 @@ function CurrentPrice() {
           </button>
         ))}
       </div>
+      {selectedStock && (
+        <StockPopup stockDetail={selectedStock} onClose={closePopup} />
+      )}
     </div>
   );
 }

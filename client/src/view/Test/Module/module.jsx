@@ -9,8 +9,8 @@ import pic2 from "src/assets/ch1-3.png";
 
 function Module() {
   return (
-    <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
-      <div className="bg-white">
+    <div style={{ backgroundColor: "bg-gray-900", minHeight: "100vh" }}>
+      <div className="bg-gray-900">
         <div className="heading">
           <h1 className="text-black text-6xl font-extrabold pt-[50px] pl-[50px]">
             {/* {article.num}. {article.title} */}
@@ -35,18 +35,7 @@ function Module() {
             alt="pic"
             style={{ maxWidth: "100%", maxHeight: "100%", margin: "auto" }}
           />
-          <p className="text-justify px-[300px]">
-            For the sake of simplicity, let us ignore the tax effect in this
-            discussion. To drive the point across, let us make a few simple
-            assumptions – The employer is kind enough to give you a 10% salary
-            hike every year. The cost of living is likely to go up by 8% yearly.
-            You are 30 years old and plan to retire at 50, this translates to 20
-            working years. You don’t intend to work after you retire. Your
-            expenses are fixed, and you don’t foresee any other expenses. The
-            balance cash of Rs.20,000/- per month is retained as hard cash.
-            Going by these assumptions, here is what the cash balance will look
-            like in 20 years.
-          </p>
+          <p className="text-justify px-[300px]"></p>
           <img
             src={pic1}
             alt="pic1"

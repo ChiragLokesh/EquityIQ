@@ -31,42 +31,8 @@
 <body>
     <h1>Stock Filter</h1>
     <form id="stockForm">
-        <div class="slider-container">
-            <label for="peMin">P/E Ratio:</label>
-            <input type="range" min="0" max="100" value="0" id="peMin"
-                oninput="updateOutput('peMinOutput', this.value)">
-            to
-            <input type="range" min="0" max="100" value="100" id="peMax"
-                oninput="updateOutput('peMaxOutput', this.value)">
-            <span id="peMinOutput" class="output">0</span> - <span id="peMaxOutput" class="output">100</span>
-        </div>
-        <div class="slider-container">
-            <label for="epsMin">EPS:</label>
-            <input type="range" min="0" max="50" value="0" id="epsMin"
-                oninput="updateOutput('epsMinOutput', this.value)">
-            to
-            <input type="range" min="0" max="50" value="50" id="epsMax"
-                oninput="updateOutput('epsMaxOutput', this.value)">
-            <span id="epsMinOutput" class="output">0</span> - <span id="epsMaxOutput" class="output">50</span>
-        </div>
-        <div class="slider-container">
-            <label for="divYieldMin">Dividend Yield (%):</label>
-            <input type="range" min="0" max="20" value="0" id="divYieldMin"
-                oninput="updateOutput('divYieldMinOutput', this.value)">
-            to
-            <input type="range" min="0" max="20" value="20" id="divYieldMax"
-                oninput="updateOutput('divYieldMaxOutput', this.value)">
-            <span id="divYieldMinOutput" class="output">0</span> - <span id="divYieldMaxOutput" class="output">20</span>
-        </div>
-        <div class="slider-container">
-            <label for="pbRatioMin">P/B Ratio:</label>
-            <input type="range" min="0" max="10" value="0" id="pbRatioMin"
-                oninput="updateOutput('pbRatioMinOutput', this.value)">
-            to
-            <input type="range" min="0" max="10" value="10" id="pbRatioMax"
-                oninput="updateOutput('pbRatioMaxOutput', this.value)">
-            <span id="pbRatioMinOutput" class="output">0</span> - <span id="pbRatioMaxOutput" class="output">10</span>
-        </div>
+        <!-- Sliders for P/E Ratio, EPS, Dividend Yield, P/B Ratio -->
+        <!-- As shown in the previous response -->
         <button type="button" onclick="fetchStocks()">Filter Stocks</button>
     </form>
 
@@ -97,7 +63,7 @@
                     results.innerHTML = '';
                     data.forEach(stock => {
                         let item = document.createElement('li');
-                        item.textContent = `${stock.NAME} - P/E: ${stock['P/E RATIO']}, EPS: ${stock.EPS}, Dividend Yield: ${stock['DIV YEILD(%)']}%, P/B: ${stock['P/B RATIO']}`;
+                        item.textContent = `NAME: ${stock['NAME']} ,P/E: ${stock['P/E RATIO']}, EPS: ${stock.EPS}, Dividend Yield: ${stock['DIV YEILD(%)']}%, P/B: ${stock['P/B RATIO']}`;
                         results.appendChild(item);
                     });
                 })

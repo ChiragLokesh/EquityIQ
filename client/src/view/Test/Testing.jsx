@@ -11,14 +11,14 @@ function Testing() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="h-full dark:bg-gray-900">
       <div className="heading">
-        <h1 className="text-black text-6xl font-extrabold pt-10 pl-10">
+        <h1 className="text-white text-6xl font-extrabold pt-10 pl-10">
           Stock Market Education
         </h1>
       </div>
       <div className="pb-10">
-        <h1 className="text-black text-4xl font-bold pl-10">
+        <h1 className="text-white text-4xl font-bold pl-10">
           Play the market to your favor
         </h1>
       </div>

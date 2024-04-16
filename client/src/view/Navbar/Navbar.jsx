@@ -32,14 +32,14 @@ function Navbar() {
           <h2 className="mx-4" onClick={() => handleNavigation("/explore")}>
             Explore
           </h2>
-          <h2 className="mx-4" onClick={() => handleNavigation("/testing")}>
-            KnowledgeHub
+          <h2 className="mx-4" onClick={() => handleNavigation("/filter")}>
+            Research
           </h2>
           <h2 className="mx-4" onClick={() => handleNavigation("/news")}>
             News
           </h2>
-          <h2 className="mx-4" onClick={() => handleNavigation("/filter")}>
-            Filter
+          <h2 className="mx-4" onClick={() => handleNavigation("/testing")}>
+            KnowledgeHub
           </h2>
         </div>
         <div className="navbar-search">
