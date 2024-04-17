@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { DateTime } from "luxon";
 import SearchIcon from "src/assets/search.png";
 
@@ -7,8 +7,10 @@ function News() {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const searchRef = useRef(null);
 
-  // Predefined list of autofill suggestions
   const autofillSuggestions = [
     "Reliance Industries",
     "Tata Consultancy Services",
@@ -53,12 +55,35 @@ function News() {
     "Shree Cement",
   ];
 
+  useEffect(() => {
+    async function fetchInitialNews() {
+      try {
+        const response = await fetch(
+          `https://newsapi.org/v2/top-headlines?category=business&country=in&apiKey=${
+            import.meta.env.VITE_NEWS_API_KEY
+          }`
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setNews(data);
+      } catch (error) {
+        setError(`Fetch news failed: ${error.message}`);
+        console.error("Fetch news failed:", error);
+      }
+    }
+
+    fetchInitialNews();
+  }, []);
+
   async function getNews() {
     setError("");
     if (!query) {
       setError("Please enter a search query.");
       return;
     }
+    setLoading(true); // Set loading to true when search is initiated
     try {
       const response = await fetch(
         `https://newsapi.org/v2/top-headlines?q=${query}&category=business&country=in&apiKey=${
@@ -73,6 +98,8 @@ function News() {
     } catch (error) {
       setError(`Fetch news failed: ${error.message}`);
       console.error("Fetch news failed:", error);
+    } finally {
+      setLoading(false); // Set loading to false after search is completed
     }
   }
 
@@ -93,10 +120,32 @@ function News() {
     getNews();
   };
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target) &&
+        !event.target.closest(".suggestion-list")
+      ) {
+        setShowSuggestions(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const toggleSuggestions = () => {
+    setShowSuggestions(!showSuggestions);
+  };
+
   const handleSuggestionClick = (suggestion) => {
     setQuery(suggestion);
-    setSuggestions([]);
-    getNews();
+    setSuggestions([]); // Clear suggestions
+    setShowSuggestions(false); // Hide suggestions when a suggestion is clicked
+    getNews(); // Fetch news based on the clicked suggestion
   };
 
   return (
@@ -110,21 +159,25 @@ function News() {
         onSubmit={handleSearchSubmit}
         className="flex justify-center h-[20vh] relative"
       >
-        <div style={{ margin: "20px", display: "flex", alignItems: "center" }}>
+        <div
+          style={{ margin: "20px", display: "flex", alignItems: "center" }}
+          ref={searchRef}
+        >
           <input
             type="text"
             value={query}
             onChange={handleSearchChange}
             placeholder="Search articles"
-            className="text-black" // Add this class
+            className="text-black"
             style={{
               marginRight: "10px",
               padding: "10px",
-              width: "300px", // Adjusted width
+              width: "300px",
               border: "2px solid #ccc",
               borderRadius: "5px",
               fontSize: "1rem",
             }}
+            onClick={toggleSuggestions}
           />
           <button
             type="submit"
@@ -140,8 +193,11 @@ function News() {
             <img src={SearchIcon} alt="search" className="w-6 h-6" />
           </button>
         </div>
-        {suggestions.length > 0 && (
-          <ul className="absolute z-10 bg-white w-80 rounded-b-lg border border-gray-300 top-full mt-1">
+        {showSuggestions && suggestions.length > 0 && (
+          <ul
+            className="suggestion-list absolute z-10 bg-white w-80 rounded-b-lg border border-gray-300 top-full mt-1"
+            onClick={(e) => e.stopPropagation()}
+          >
             {suggestions.map((suggestion, index) => (
               <li
                 key={index}
@@ -154,6 +210,7 @@ function News() {
           </ul>
         )}
       </form>
+      {loading && <div className="text-white text-center mt-2">Loading...</div>}
       {error && <div className="text-red-500 text-center">{error}</div>}
       {news && news.articles && (
         <table className="w-1/2 mx-auto table-auto">
